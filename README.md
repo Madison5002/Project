@@ -1,4 +1,10 @@
 # Project
+
+
+conda create --name project_lab python=3.13.1
+conda activate project_lab
+
+
 #Cecily Davis + Madison Parker - Rock Paper Scissors Lizard Spock - Project Milestone 3
 
 To build the Rock, Paper, Scissors, Lizard, Spock game, we need to consider a series of steps. 
