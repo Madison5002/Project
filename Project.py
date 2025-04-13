@@ -1,101 +1,123 @@
+import random
+
 class Game():
     def __init__(self):
-        choice = ()
+        self.choices = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
 
-    def rock(self):
-        for rock in Game:
-            if input == 'Spock':
+    def rock(self, opponent_choice):
+            if opponent_choice == 'Spock':
                 return 'Rock has been vaporized. You lose.'
-            elif input == 'Paper':
+            elif opponent_choice == 'Paper':
                 return 'Rock has been covered. You lose.'
-            elif input == 'Lizard' or 'Scissors':
-                return 'Rock has crushed {choice}. You win.'
+            elif opponent_choice in ['Lizard', 'Scissors']: 
+                return f'Rock has crushed {opponent_choice}. You win.'
             else:
                 return 'Draw'
             
-    def paper(self):
-        for paper in Game:
-            if input == 'Scissors':
+    def paper(self, opponent_choice):
+            if opponent_choice == 'Scissors':
                 return 'Paper has been cut. You lose.'
-            elif input == 'Lizard':
+            elif opponent_choice == 'Lizard':
                 return 'Paper has been eaten. You lose.'
-            elif input == 'Spock':
+            elif opponent_choice == 'Spock':
                 return 'Paper has disproved Spock. You win.'
-            elif input == 'Rock':
+            elif opponent_choice == 'Rock':
                 return 'Paper has covered Rock. You win.'
             else:
                 return 'Draw'
             
-    def scissors(self):
-        for scissors in Game:
-            if input == 'Rock':
+    def scissors(self, opponent_choice):
+            if opponent_choice == 'Rock':
                 return 'Scissors have been crushed. You lose.'
-            elif input == 'Spock':
+            elif opponent_choice == 'Spock':
                 return 'Scissors have been smashed. You lose.'
-            elif input == 'Paper':
+            elif opponent_choice == 'Paper':
                 return 'Scissors have cut Paper. You win.'
-            elif input == 'Lizard':
+            elif opponent_choice == 'Lizard':
                 return 'Scissors have decapitated Lizard. You win.'
             else:
                 return 'Draw'
             
-    def spock(self):
-        for spock in Game:
-            if input == 'Paper':
+    def spock(self, opponent_choice):
+            if opponent_choice == 'Paper':
                 return 'Spock has been disproven. You lose.'
-            elif input == 'Lizard':
+            elif opponent_choice == 'Lizard':
                 return 'Spock has been poisoned. You lose.'
-            elif input == 'Rock':
+            elif opponent_choice == 'Rock':
                 return 'Spock has vaporized Rock. You win.'
-            elif input == 'Scissors':
+            elif opponent_choice == 'Scissors':
                 return 'Spock has smashed Scissors. You win.'
             else:
                 return 'Draw'
             
-    def lizard(self):
-        for lizard in Game:
-            if input == 'Rock':
+    def lizard(self, opponent_choice):
+            if opponent_choice == 'Rock':
                 return 'Lizard has been crushed. You lose.'
-            elif input == 'Scissors':
+            elif opponent_choice == 'Scissors':
                 return 'Lizard has been decapitated. You lose.'
-            elif input == 'Paper':
-                return 'Lizard has eaten paper. You win.'
-            elif input == 'Spock':
+            elif opponent_choice == 'Paper':
+                return 'Lizard has eaten Paper. You win.'
+            elif opponent_choice == 'Spock':
                 return 'Lizard has poisoned Spock. You win.'
             else:
                 return 'Draw'
             
             
     def play_game(self):
-        game = []
-        choice = input()
-        for moves in game:
-            if choice == Rock:
-                pass 
+        player = Player()
+        computer = Computer()
 
+        player_choice = player.get_choice()
+        if player_choice not in self.choices:
+            print("Invalid choice. Please try again.")
+            return
+        
+        computer_choice = computer.random_choice()
+
+        print("You chose:", player_choice)
+        print("Computer chose:", computer_choice)
+
+        if player_choice == 'Rock':
+             result = self.rock(computer_choice)
+        elif player_choice == 'Paper':
+             result = self.paper(computer_choice)
+        elif player_choice == 'Scissors':
+             result = self.scissors(computer_choice)
+        elif player_choice == 'Lizard':
+             result = self.lizard(computer_choice)
+        elif player_choice == 'Spock':
+             result = self.spock(computer_choice)
+        else:
+            result = "Invalid choice."
+        
+        print(result)
 
     def play_round(self):
-        pass   
-
-
+        self.play_game()
 
 class Player():
-    def __init__(self, name, choice):
+    def __init__(self, name="You", choice=""):
         self.name = name
         self.choice = choice
 
     def get_choice(self):
+        choices = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
         choice = input('Pick One: Rock, Paper, Scissors, Lizard, Spock')
+        choice = choice.capitalize()
 
+        self.choice = choice
+        return choice
 
 
 class Computer():
-    def __init__(self, choice):
+    def __init__(self, choice=""):
         self.choice = choice
 
     def random_choice(self):
-        pass
-
-
-        
-
+        choices = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
+        self.choice = random.choice(choices)
+        return self.choice
+    
+if __name__ == "__main__":
+    game = Game()
+    game.play_round()
