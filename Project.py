@@ -68,9 +68,11 @@ class Game():
         computer = Computer()
 
         player_choice = player.get_choice()
-        if player_choice not in self.choices:
+
+        while player_choice not in self.choices:
             print("Invalid choice. Please try again.")
-            return
+            player_choice = player.get_choice()
+
         
         computer_choice = computer.random_choice()
 
@@ -102,7 +104,7 @@ class Player():
 
     def get_choice(self):
         choices = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
-        choice = input('Pick One: Rock, Paper, Scissors, Lizard, Spock')
+        choice = input('Pick One: Rock, Paper, Scissors, Lizard, Spock: ')
         choice = choice.capitalize()
 
         self.choice = choice
