@@ -1,5 +1,7 @@
 import random
 
+print("--------Choose one of the five options: Rock, Paper, Scissors, Lizard, or Spock.--------\nThe winner is determined by the following rules: \nScissors cuts Paper\nPaper covers Rock\nRock crushes Lizard\nLizard poisons Spock\nSpock smashes Scissors\nScissors decapitates Lizard\nLizard eats Paper\nPaper disproves Spock\nSpock vaporizes Rock\nRock crushes Scissors\nIf both players choose the same option, it’s a tie")
+
 class Game():
     def __init__(self):
         self.choices = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
